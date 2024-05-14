@@ -1,4 +1,7 @@
 import axios from "axios";
+import { ICategoria } from "../interfaces/ICategoria";
+import { ILivro } from "../interfaces/ILivro";
+import { IOpcaoCompra } from "../interfaces/ICompra";
 
 const http = axios.create({
     baseURL: 'http://localhost:8000',
@@ -22,3 +25,19 @@ http.interceptors.request.use(function (config) {
   });
 
 export default http
+
+export const obterCategoriaPorSlug = async ( slug: string) => {
+  const resposta = await http.get<ICategoria[]>('categorias', {
+    params: {
+      slug
+    }
+  })
+
+  return resposta.data[0]
+}
+
+export const obterLivrosDetaques = async (tipo: string) => {
+  const resposta = await http.get<ILivro[]>(`public/${tipo}`)
+
+  return resposta.data
+}
