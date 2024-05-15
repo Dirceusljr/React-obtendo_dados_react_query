@@ -10,6 +10,7 @@ import TituloPrincipal from '../../componentes/TituloPrincipal'
 import SobreAutor from '../../componentes/SobreAutor'
 import BlocoSobre from '../../componentes/BlocoSobre'
 import './Livro.css'
+import { AxiosError } from 'axios'
 
 const Livro = () => {
 
@@ -17,7 +18,17 @@ const Livro = () => {
 
   const [opcao, setOpcao] = useState<AbGrupoOpcao>()
 
-  const { data: livro, isLoading} = useQuery<ILivro | null>(['livro', params.slug], () => obterLivro(params.slug || ''))
+  const { data: livro, isLoading, error} = useQuery<ILivro | null, AxiosError>(['livro', params.slug], () => obterLivro(params.slug || ''))
+
+  if(error) {
+    console.log('Alguma coisa deu errada!')
+    console.log(error.message)
+    return <h1>OPS! Ocorreu um erro inesperado!</h1>
+  }
+
+  if(livro === null) {
+    return <h1>Livro não encontrado!</h1>
+  }
 
   if(isLoading || !livro) {
     return <Loader />

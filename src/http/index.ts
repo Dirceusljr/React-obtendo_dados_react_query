@@ -58,10 +58,17 @@ export const obterLivro = async ( slug: string) => {
       slug
     }
   })
+  if(resposta.data.length === 0) {
+    return null
+  }
   return resposta.data[0]
 }
 
 export const obterAutor = async ( autorId: number) => {
+try {
   const resposta = await http.get<IAutor>(`autores/${autorId}`)
   return resposta.data
+} catch (error) {
+  console.log('O autor  não foi encontrado!')
+}
   }
