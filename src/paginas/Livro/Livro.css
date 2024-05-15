@@ -1,0 +1,39 @@
+.livroDetalhe .container {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.livroDetalhe .container .detalhes {
+    flex-grow: 1;
+    padding-right: 24px;
+}
+.livroDetalhe .container .detalhes {
+    flex-grow: 1;
+    padding-right: 24px;
+}
+.livroDetalhe .container .detalhes h2 {
+    font-size: 24px;
+    color: #002F52;
+}
+.livroDetalhe .container .detalhes h3 {
+    font-size: 16px;
+    color: #002F52;
+}
+.livroDetalhe .container .detalhes p {
+    font-size: 14px;
+    color: rgba(0, 0, 0, 0.85);
+}
+.livroDetalhe .container .detalhes p strong {
+    font-weight: 700;
+    font-size: 14px;
+    color: rgba(0, 0, 0, 0.54);
+}
+.livroDetalhe .container .detalhes .opcoes {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+}
+
+.livroDetalhe .qtdContainer {
+    margin: 32px 0;
+}
